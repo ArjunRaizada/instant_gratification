@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+            }
+            h1 {
+                text-align: center;
+            }
+            form {
+                width: 300px;
+                margin: 0 auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            label {
+                font-weight: bold;
+            }
+            input[type="float"] {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            button {
+                background-color: #343cd3;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 100%;
+            }
+            button:hover {
+                background-color: #1222b0;
+            }
+            #final_judgement {
+                text-align: center;
+                margin-top: 20px;
+                font-weight: bold;
+            }
+        </style>
+        <script>
+            function is_it(){
+                let x = parseFloat(document.forms["input_box"]["time"].value);
+                let y = parseFloat(document.forms["input_box"]["frequency"].value);
+                let text = "";
+                if (!isNaN(x) && !isNaN(y) && x >= 40 && y <= 2 && x >= 0 && y >= 0 ) {
+                    text = "O.K TESTED";
+                } else {
+                    text = "This task should not be performed as this will induce instant gratification!!!";
+                }
+                document.getElementById("final_judgement").innerHTML = text;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Instant Gratification Calculator</h1>
+        <form name="input_box" method="get">
+            <label for="time">Unit time (in minutes):</label><br>
+            <input type="number" id="time" name="time" step="1"><br><br>
+            <label for="frequency">Frequency:</label><br>
+            <input type="number" id="frequency" name="frequency" step="1"><br><br>
+            <button type="button" onclick="is_it()">Submit</button>
+            <p id="final_judgement"></p>
+        </form>
+    </body>
+</html>
